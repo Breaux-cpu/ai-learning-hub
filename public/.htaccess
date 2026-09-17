@@ -1,0 +1,31 @@
+# AI Learning Hub — static hosting config (Apache / cPanel)
+# Safe to deploy at domain root or in a subfolder.
+
+# Correct MIME types
+AddType text/html .html
+AddType application/javascript .js
+AddType text/css .css
+AddType image/svg+xml .svg
+AddType application/json .json
+
+# Gzip compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# Caching: hashed assets are immutable, HTML is never cached
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

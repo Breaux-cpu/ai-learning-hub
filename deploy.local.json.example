@@ -1,0 +1,7 @@
+{
+  "server": "ftp://ftp.exopase.com",
+  "username": "your-cpanel-username",
+  "password": "your-ftp-password",
+  "remoteDir": "public_html",
+  "useSsl": false
+}

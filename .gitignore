@@ -1,0 +1,6 @@
+node_modules/
+dist/
+*.zip
+deploy.local.json
+.env
+.env.*
